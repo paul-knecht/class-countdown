@@ -41,6 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if isRunningTests { return }
 
+        // Use the calendar names from the settings file on this Mac.
+        Countdown.calendarNames = CalendarSettings.load()
+
         // Only one copy may run; this one replaces any older copy.
         SingleInstance.quitOlderCopies()
 

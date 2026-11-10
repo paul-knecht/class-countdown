@@ -5,16 +5,13 @@ import Foundation
 // can be checked by a test.
 enum Countdown {
 
-    // ▼▼▼ CHANGE THE CALENDARS HERE ▼▼▼
+    // Example calendar names, used until you list your own in the
+    // settings file (see CalendarSettings.swift).
+    static let exampleCalendarNames = ["University", "Classes"]
+
     // Only events from calendars with exactly these names are shown.
-    static let calendarNames = [
-        "University",
-        "Classes",
-        "Study",
-        "Campus Events",
-        "Timetable",
-        "Timetable II",
-    ]
+    // The app replaces this with the names from the settings file at launch.
+    static var calendarNames = exampleCalendarNames
 
     // The countdown appears this long before an event starts (in seconds).
     static let leadTime: TimeInterval = 30 * 60
