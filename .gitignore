@@ -17,3 +17,6 @@ xcuserdata/
 
 # Claude Code personal settings
 .claude/settings.local.json
+
+# Left behind by scripts/install.sh when a build fails
+build-install.log

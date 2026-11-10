@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		CC0000000000000000000020 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC0000000000000000000009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC0000000000000000000006;
+			remoteInfo = ClassCountdown;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CC0000000000000000000001 /* ClassCountdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassCountdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0000000000000000000011 /* ClassCountdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassCountdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CC0000000000000000000002 /* ClassCountdown */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClassCountdown;
+			sourceTree = "<group>";
+		};
+		CC0000000000000000000012 /* ClassCountdownTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClassCountdownTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC0000000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC0000000000000000000013 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC0000000000000000000004 = {
+			isa = PBXGroup;
+			children = (
+				CC0000000000000000000002 /* ClassCountdown */,
+				CC0000000000000000000012 /* ClassCountdownTests */,
+				CC0000000000000000000005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC0000000000000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000000000000000000001 /* ClassCountdown.app */,
+				CC0000000000000000000011 /* ClassCountdownTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC0000000000000000000006 /* ClassCountdown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC000000000000000000000D /* Build configuration list for PBXNativeTarget "ClassCountdown" */;
+			buildPhases = (
+				CC0000000000000000000007 /* Sources */,
+				CC0000000000000000000003 /* Frameworks */,
+				CC0000000000000000000008 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CC0000000000000000000002 /* ClassCountdown */,
+			);
+			name = ClassCountdown;
+			productName = ClassCountdown;
+			productReference = CC0000000000000000000001 /* ClassCountdown.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC0000000000000000000016 /* ClassCountdownTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC000000000000000000001D /* Build configuration list for PBXNativeTarget "ClassCountdownTests" */;
+			buildPhases = (
+				CC0000000000000000000017 /* Sources */,
+				CC0000000000000000000013 /* Frameworks */,
+				CC0000000000000000000018 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC0000000000000000000021 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CC0000000000000000000012 /* ClassCountdownTests */,
+			);
+			name = ClassCountdownTests;
+			productName = ClassCountdownTests;
+			productReference = CC0000000000000000000011 /* ClassCountdownTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC0000000000000000000009 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 2720;
+				TargetAttributes = {
+					CC0000000000000000000016 = {
+						TestTargetID = CC0000000000000000000006;
+					};
+				};
+			};
+			buildConfigurationList = CC000000000000000000000A /* Build configuration list for PBXProject "ClassCountdown" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC0000000000000000000004;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CC0000000000000000000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC0000000000000000000006 /* ClassCountdown */,
+				CC0000000000000000000016 /* ClassCountdownTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC0000000000000000000008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC0000000000000000000018 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC0000000000000000000007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC0000000000000000000017 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC0000000000000000000021 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC0000000000000000000006 /* ClassCountdown */;
+			targetProxy = CC0000000000000000000020 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CC000000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC000000000000000000000C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		CC000000000000000000000E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "ClassCountdown reads your calendars to show a countdown before your university events. It never changes them.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.classcountdown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CC000000000000000000000F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "ClassCountdown reads your calendars to show a countdown before your university events. It never changes them.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.classcountdown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CC000000000000000000001E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.classcountdown.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClassCountdown.app/Contents/MacOS/ClassCountdown";
+			};
+			name = Debug;
+		};
+		CC000000000000000000001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = local.classcountdown.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClassCountdown.app/Contents/MacOS/ClassCountdown";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC000000000000000000000A /* Build configuration list for PBXProject "ClassCountdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC000000000000000000000B /* Debug */,
+				CC000000000000000000000C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC000000000000000000000D /* Build configuration list for PBXNativeTarget "ClassCountdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC000000000000000000000E /* Debug */,
+				CC000000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC000000000000000000001D /* Build configuration list for PBXNativeTarget "ClassCountdownTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC000000000000000000001E /* Debug */,
+				CC000000000000000000001F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC0000000000000000000009 /* Project object */;
+}
