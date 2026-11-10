@@ -8,6 +8,12 @@ of the time there is nothing in the menu bar.
 Click the countdown to see the event's name, start time and room, and to
 quit the app.
 
+## Why I built it
+
+When I work in the library I sometimes lose track of time. Thirty minutes before class a countdown appears in the menu bar, and one click shows the room from the calendar event.
+
+Built with [Claude Code](https://claude.com/claude-code) while learning Swift, Xcode and Git.
+
 ## Which events count
 
 Only events in the calendars you list count. All-day, declined and
