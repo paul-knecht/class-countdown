@@ -37,21 +37,26 @@ final class CalendarReader {
         store.calendars(for: .event).filter { Countdown.calendarNames.contains($0.title) }
     }
 
+    // If access was just granted or taken away (for example in System
+    // Settings), tell the store to forget what it knew and look again.
+    private func resetIfAccessChanged() {
+        let access = self.access
+        if access != lastAccess {
+            store.reset()
+            lastAccess = access
+        }
+    }
+
     // Which of the wanted calendar names exist on this Mac.
     func foundCalendarNames() -> [String] {
+        resetIfAccessChanged()
         let existing = Set(wantedCalendars().map(\.title))
         return Countdown.calendarNames.filter { existing.contains($0) }
     }
 
     // All events of the wanted calendars that touch the given time span.
     func events(from: Date, to: Date) -> [ClassEvent] {
-        let access = self.access
-        if access != lastAccess {
-            // Access was just granted or taken away (for example in System
-            // Settings). Tell the store to forget what it knew and look again.
-            store.reset()
-            lastAccess = access
-        }
+        resetIfAccessChanged()
         guard access == .granted else { return [] }
         let calendars = wantedCalendars()
         // Careful: asking with an empty list would mean "all calendars".

@@ -18,8 +18,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // The small window shown when the app is opened again while running.
     var statusWindow: NSWindow?
 
-    // What the menu bar showed last, so we only write a log line on changes.
+    // What the menu bar showed last. The item is only touched when this
+    // changes, so an open menu is not replaced every few seconds.
     private var lastShown = ""
+
+    // Our request to macOS not to slow the app down (see below).
+    private var napGuard: NSObjectProtocol?
 
     // True while the automated tests run. Then the app must leave the real
     // calendar, the login items and other running copies alone.
@@ -44,9 +48,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let defaults = UserDefaults.standard
         if LoginItem.shouldEnableAutomatically(bundlePath: Bundle.main.bundlePath,
                                                alreadyDone: defaults.bool(forKey: "didSetUpLoginItem")) {
-            LoginItem.setEnabled(true)
-            defaults.set(true, forKey: "didSetUpLoginItem")
+            // Remember it only if it worked, so a failed try is repeated next time.
+            if LoginItem.setEnabled(true) {
+                defaults.set(true, forKey: "didSetUpLoginItem")
+            }
         }
+
+        // macOS slows down apps that show nothing on screen ("App Nap").
+        // That could make the countdown appear late, so we ask it not to.
+        napGuard = ProcessInfo.processInfo.beginActivity(
+            options: .userInitiatedAllowingIdleSystemSleep,
+            reason: "Keeps the countdown on time")
 
         // Look at the calendar every 5 seconds. ".common" keeps the timer
         // running while a menu is open.
@@ -78,7 +90,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // The one place that changes the menu bar item.
     func show(event: ClassEvent?, access: CalendarAccess, now: Date) {
+        // First describe in one line what should be visible now.
         let shown: String
+        if access == .denied {
+            shown = "no calendar access"
+        } else if let event {
+            shown = Countdown.menuBarText(for: event, now: now) + " | "
+                + Countdown.displayTitle(event) + " | " + detailLine(for: event)
+        } else {
+            shown = "hidden"
+        }
+
+        // Nothing new? Then leave the menu bar alone.
+        if shown == lastShown { return }
+        lastShown = shown
+        NSLog("ClassCountdown menu bar: %@", shown)
 
         if access == .denied {
             // Without access the app would be invisible forever, so it
@@ -88,40 +114,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem.button?.title = ""
             statusItem.menu = noAccessMenu()
             statusItem.isVisible = true
-            shown = "no calendar access"
         } else if let event {
-            let text = Countdown.menuBarText(for: event, now: now)
             statusItem.button?.image = NSImage(systemSymbolName: "graduationcap",
                                                accessibilityDescription: "Next class")
-            statusItem.button?.title = " " + text
+            statusItem.button?.title = " " + Countdown.menuBarText(for: event, now: now)
             statusItem.menu = eventMenu(for: event)
             statusItem.isVisible = true
-            shown = "\(text) (\(Countdown.displayTitle(event)))"
         } else {
             statusItem.isVisible = false
             statusItem.menu = nil
-            shown = "hidden"
         }
+    }
 
-        if shown != lastShown {
-            lastShown = shown
-            NSLog("ClassCountdown menu bar: %@", shown)
-        }
+    // "10:15 · Room 2.03": the start time in the Mac's own time format.
+    private func detailLine(for event: ClassEvent) -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none
+        return Countdown.detailLine(for: event, timeText: formatter.string(from: event.start))
     }
 
     // MARK: - Menus
 
     // The menu under the countdown: event name, time and room, Quit.
     private func eventMenu(for event: ClassEvent) -> NSMenu {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .none
-
         let menu = NSMenu()
         // Items without an action are grey and can't be clicked: plain text.
         menu.addItem(withTitle: Countdown.displayTitle(event), action: nil, keyEquivalent: "")
-        menu.addItem(withTitle: Countdown.detailLine(for: event, timeText: formatter.string(from: event.start)),
-                     action: nil, keyEquivalent: "")
+        menu.addItem(withTitle: detailLine(for: event), action: nil, keyEquivalent: "")
         menu.addItem(.separator())
         menu.addItem(quitItem())
         return menu
@@ -167,12 +187,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Build the window anew each time, so the facts in it are current.
         statusWindow?.close()
 
-        let found = calendar.foundCalendarNames()
+        // The automated tests must not look at the real calendar, so they
+        // get a window without calendar facts.
+        let access: CalendarAccess = isRunningTests ? .denied : calendar.access
+        let found = isRunningTests ? [] : calendar.foundCalendarNames()
         let view = StatusView(
-            access: calendar.access,
+            access: access,
             found: found,
             missing: Countdown.calendarNames.filter { !found.contains($0) },
-            nextEventText: nextEventText(),
+            nextEventText: isRunningTests ? nil : nextEventText(),
             openPrivacySettings: { [weak self] in self?.openPrivacySettings() },
             quit: { NSApp.terminate(nil) }
         )
@@ -186,7 +209,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusWindow = window
 
         // A background app has to step forward, or the window opens behind others.
-        NSApp.activate(ignoringOtherApps: true)
+        if !isRunningTests { NSApp.activate(ignoringOtherApps: true) }
         window.center()
         window.makeKeyAndOrderFront(nil)
     }
