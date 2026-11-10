@@ -54,3 +54,7 @@ xcodebuild -project ClassCountdown.xcodeproj -scheme ClassCountdown -derivedData
 The rules (which event, what text, when to hide) live in
 `ClassCountdown/Countdown.swift` and are tested without real calendars in
 `ClassCountdownTests/CountdownTests.swift`.
+
+## Licence
+
+MIT, see [LICENSE](LICENSE).
