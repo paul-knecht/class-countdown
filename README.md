@@ -10,12 +10,18 @@ quit the app.
 
 ## Which events count
 
-Only events in calendars with exactly these names: `University`, `Classes`,
-`Study`, `Campus Events`, `Timetable`, `Timetable II`.
-All-day, declined and cancelled events are ignored.
+Only events in the calendars you list count. All-day, declined and
+cancelled events are ignored.
 
-To change the list, edit `calendarNames` at the top of
-`ClassCountdown/Countdown.swift` and install again.
+The list is a small text file on your Mac, one calendar name per line:
+
+```
+~/Library/Application Support/ClassCountdown/calendars.txt
+```
+
+The app creates it with two example names (`University`, `Classes`) the
+first time it starts. Put in the exact names of your own calendars and
+start ClassCountdown again.
 
 ## Install
 

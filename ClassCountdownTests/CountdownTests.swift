@@ -80,8 +80,8 @@ final class CountdownTests: XCTestCase {
 
     // MARK: - Which events count
 
-    func testOnlyTheSixCalendars() {
-        let wanted = ["University", "Classes", "Study", "Campus Events", "Timetable", "Timetable II"]
+    func testOnlyTheListedCalendars() {
+        let wanted = ["University", "Classes"]
         XCTAssertEqual(Countdown.calendarNames, wanted)
         for name in wanted {
             XCTAssertNotNil(Countdown.eventToShow([event(inSeconds: 600, calendar: name)], now: now), name)
@@ -89,6 +89,13 @@ final class CountdownTests: XCTestCase {
         for name in ["Private", "university", "University ", ""] {
             XCTAssertNil(Countdown.eventToShow([event(inSeconds: 600, calendar: name)], now: now), name)
         }
+    }
+
+    func testParsesSettingsFile() {
+        let text = "# my calendars\nUniversity\n\n  Classes  \n#Private\n"
+        XCTAssertEqual(CalendarSettings.parse(text), ["University", "Classes"])
+        XCTAssertEqual(CalendarSettings.parse(""), [])
+        XCTAssertEqual(CalendarSettings.parse("\n \n# only a comment\n"), [])
     }
 
     func testIgnoresAllDayDeclinedCancelled() {
